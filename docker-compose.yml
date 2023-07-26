@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+
+  ui:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./src/main/resources/static:/usr/share/nginx/html
+    depends_on:
+      - api
